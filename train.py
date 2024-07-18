@@ -14,7 +14,7 @@ BATCH_SIZE = 4
 
 INITIAL_LR = 0.01
 DECAY_STEPS = 433 * 155
-LR = tf.keras.experimental.CosineDecay(init_lr, DECAY_STEPS, 1e-3)
+LR = tf.keras.experimental.CosineDecay(INITIAL_LR, DECAY_STEPS, 1e-3)
 
 CHECKPOINT_PATH = '/path/to/checkpoints/folder'
 
@@ -36,4 +36,4 @@ opt = tf.keras.optimizers.SGD(LR, momentum=0.9)
 
 checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(CHECKPOINT_PATH, save_weights_only=True)
 
-model.fit(train_data, epochs=EPOCHS, callbacks=[checkpoint_callback]. use_multiprocessing=True)
+model.fit(train_data, epochs=EPOCHS, callbacks=[checkpoint_callback], use_multiprocessing=True)
